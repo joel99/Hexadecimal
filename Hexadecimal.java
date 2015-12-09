@@ -149,10 +149,11 @@ public class Hexadecimal {
       negative integer if this<input, positive integer otherwise
       =============================================*/
     public int compareTo( Object other ) {
+		ClassCastException e = new ClassCastException("Can't cast " + other.getClass() + " to " + this.getClass());
 	if (other instanceof Hexadecimal)
 	    return _decNum - ((Hexadecimal)other)._decNum;
 	else 
-	    throw new ClassCastException("Not a Hexadecimal input");
+	    throw e;
     }
 
 
@@ -199,7 +200,7 @@ public class Hexadecimal {
 	System.out.println( b1.compareTo(b3) ); //should be 0
 	System.out.println( b1.compareTo(b4) ); //should be neg
 	System.out.println( b4.compareTo(b1) ); //should be pos
-
+	System.out.println( b1.compareTo("hello")); //throws the expected error
     }//end main()
 
 } //end class
