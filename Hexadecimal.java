@@ -171,12 +171,17 @@ public class Hexadecimal {
 	System.out.println( b3 );       
 	System.out.println( b4 );       
 
-	System.out.println("0 in hex: "+decToHex(0));
-	System.out.println("1 in hex: "+decToHex(1));
-	System.out.println("17 in hex: "+decToHex(17));
-	System.out.println("23 in hex: "+decToHex(23));
-	System.out.println("43 in hex: "+decToHex(43));
-	System.out.println("617 in hex: "+decToHex(617));
+	System.out.println("0 in hex: "+decToHex(0));//0
+	System.out.println("1 in hex: "+decToHex(1));//1
+	System.out.println("17 in hex: "+decToHex(17));//11
+	System.out.println("23 in hex: "+decToHex(23));//17
+	System.out.println("43 in hex: "+decToHex(43));//2B
+	System.out.println("617 in hex: "+decToHex(617));//269
+	System.out.println("256 in hex: "+decToHex(256));//100
+	System.out.println("4096 in hex: "+decToHex(4096));//1000
+	System.out.println("1001 in hex: "+decToHex(1001));//3E9
+	System.out.println("400000 in hex: "+decToHex(400000));//61A80
+	System.out.println("1000 in hex: "+decToHex(1000));//3E8
 		
 	System.out.println( "\n==..." );
 	System.out.println( b1 == b2 ); //should be false
