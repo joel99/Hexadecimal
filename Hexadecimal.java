@@ -1,4 +1,4 @@
-// Team Ye Ali
+// Team Ye Ali - Joel Ye, Shanjeed Ali
 //APCS1 pd10
 //HW44 - This or That or Fourteen Other Things
 //2015 - 12 - 08
@@ -24,7 +24,7 @@ public class Hexadecimal {
     /*=====================================
       overloaded constructor
       pre:  n >= 0
-      post: sets _decNum to n, _hexNum to equiv string of bits
+      post: sets _decNum to n, _hexNum to equiv in base-16
       =====================================*/
     public Hexadecimal( int n ) {
 	_decNum = n;
@@ -34,7 +34,7 @@ public class Hexadecimal {
 
     /*=====================================
       overloaded constructor
-      pre:  s is String representing non-negative hexary number
+      pre:  s is String representing non-negative hex number
       post: sets _hexNum to input, _decNum to decimal equiv
       =====================================*/
     public Hexadecimal( String s ) {
@@ -46,7 +46,7 @@ public class Hexadecimal {
     /*=====================================
       String toString() -- returns String representation of this Object
       pre:  n/a
-      post: returns String of 1's and 0's representing value of this Object
+      post: returns String of base-16 characters representing value of this Object
       =====================================*/
     public String toString() { 
 	return _hexNum;   
@@ -54,21 +54,22 @@ public class Hexadecimal {
 
 
     /*=====================================
-      String decToHex(int) -- converts base-10 input to hexary
+      String decToHex(int) -- converts base-10 input to base-16
       pre:  n >= 0
-      post: returns String of bits
+      post: returns String of base-16 characters
       eg  decToHex(0) -> "0"
       decToHex(1) -> "1"
-      decToHex(2) -> "10"
-      decToHex(3) -> "11"
-      decToHex(14) -> "1110"
+      decToHex(17) -> "11"
+      decToHex(23) -> "17"
+      decToHex(43) -> "2B"
       =====================================*/
+    //adds the 
     public static String decToHex( int n ) {
 	String s = "";
 	while (n > 0){
 	    s = HEXDIGITS.substring(n % 16, n % 16 + 1) + s;
 		n /= 16;
-	}
+	}//adds the base-16 character at the n mod 1 index to s, then does the same with n/16
 	return s;
     }
 
@@ -76,12 +77,12 @@ public class Hexadecimal {
     /*=====================================
       String decToHexR(int) -- converts base-10 input to hexary, recursively
       pre:  n >= 0
-      post: returns String of bits
-      eg  decToHexR(0) -> "0"
-      decToHexR(1) -> "1"
-      decToHexR(2) -> "10"
-      decToHexR(3) -> "11"
-      decToHexR(14) -> "1110"
+      post: returns String of base-16 characters
+      eg  decToHex(0) -> "0"
+      decToHex(1) -> "1"
+      decToHex(17) -> "11"
+      decToHex(23) -> "17"
+      decToHex(43) -> "2B"  
       =====================================*/
     public static String decToHexR( int n ) {
 	if (n == 0)
@@ -91,15 +92,15 @@ public class Hexadecimal {
 
 
     /*=====================================
-      String hexToDec(String) -- converts base-10 input to hexary
-      pre:  s represents non-negative hexary number
+      String hexToDec(String) -- converts base-10 input to hex
+      pre:  s represents non-negative hex number
       post: returns decimal equivalent as int
       eg  
       hexToDec("0") -> 0
       hexToDec("1") -> 1
-      hexToDec("10") -> 2
-      hexToDec("11") -> 3
-      hexToDec("1110") -> 14
+      hexToDec("11") -> 17
+      hexToDec("17") -> 23
+      hexToDec("2B") -> 43
       =====================================*/
     public static int hexToDec( String s ) {
 	int n = 0;
@@ -117,11 +118,11 @@ public class Hexadecimal {
       pre:  s represents non-negative hexary number
       post: returns decimal equivalent as int
       eg  
-      hexToDecR("0") -> 0
-      hexToDecR("1") -> 1
-      hexToDecR("10") -> 2
-      hexToDecR("11") -> 3
-      hexToDecR("1110") -> 14
+      hexToDec("0") -> 0
+      hexToDec("1") -> 1
+      hexToDec("11") -> 17
+      hexToDec("17") -> 23
+      hexToDec("2B") -> 43
       =====================================*/
     public static int hexToDecR( String s ) {
 	if (s.length() <= 1)
@@ -160,16 +161,23 @@ public class Hexadecimal {
 	System.out.println();
 	System.out.println( "Testing ..." );
 
-	Hexadecimal b1 = new Hexadecimal(5);
-	Hexadecimal b2 = new Hexadecimal(5);
+	Hexadecimal b1 = new Hexadecimal(17);
+	Hexadecimal b2 = new Hexadecimal(23);
 	Hexadecimal b3 = b1;
-	Hexadecimal b4 = new Hexadecimal(7);
+	Hexadecimal b4 = new Hexadecimal(43);
 
 	System.out.println( b1 );
 	System.out.println( b2 );
 	System.out.println( b3 );       
 	System.out.println( b4 );       
 
+	System.out.println("0 in hex: "+decToHex(0));
+	System.out.println("1 in hex: "+decToHex(1));
+	System.out.println("17 in hex: "+decToHex(17));
+	System.out.println("23 in hex: "+decToHex(23));
+	System.out.println("43 in hex: "+decToHex(43));
+	System.out.println("617 in hex: "+decToHex(617));
+		
 	System.out.println( "\n==..." );
 	System.out.println( b1 == b2 ); //should be false
 	System.out.println( b1 == b3 ); //should be true
