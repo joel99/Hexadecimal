@@ -108,7 +108,7 @@ public class Hexadecimal {
 	    n += HEXDIGITS.indexOf(s.substring(0,1));
 		n *= 16;
 		s = s.substring(1);
-	}
+	}//gets the value of the first digit in s, multiplies by 16 and adds the value of the 2nd digit and repeats
 	return n;
     }
 
@@ -127,7 +127,7 @@ public class Hexadecimal {
     public static int hexToDecR( String s ) {
 	if (s.length() <= 1)
 	    return HEXDIGITS.indexOf(s);
-	return HEXDIGITS.indexOf(s.substring(s.length()-1)) + 16 * hexToDecR(s.substring(0,s.length()-1));
+	return HEXDIGITS.indexOf(s.substring(s.length()-1)) + 16 * hexToDecR(s.substring(0,s.length()-1));//takes the value of the last digit in s and multiplies it by 16*hexToDecR(s minus the last digit)
     }
 
 
